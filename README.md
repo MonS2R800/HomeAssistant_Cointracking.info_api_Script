@@ -7,36 +7,38 @@ Install
 1. Go to you Home Assistant, create a new folder "python_scripts" in the fileeditor. 
 /homeassistant/python_scripts
 
-2. In the folder "python_script" create a file with a name of your sensor.
-/homeassistant/python_scripts/your_sensor_name.py
+2. In the folder "python_script" create a file with a name of your sensor script.
+/homeassistant/python_scripts/your_script_name.py
 
 3. Copy the contents of the file "cointracking_api.py" into the file you just created.
 
-4. go to /homeassistant/configuration.yaml and ad the follow entries:
+4. Now add your api-key und api-secret, that you had creat on Cointracking.info.
+
+5. go to /homeassistant/configuration.yaml and ad the follow entries:
 
 python_script:
 
 sensor:
   - platform: command_line
-    name: CoinTracking API
-    command: "python3 /config/python_scripts/cointracking_api/your_sensor_name.py" # change the sensor name
+    name: CoinTracking Balance
+    command: "python3 /config/python_scripts/your_script_name.py" # change the script name
     value_template: "{{ value.split('account_summary:')[1].strip() }}"
     unit_of_measurement: "EUR"
     scan_interval: 300
 
-5. reboot HomeAssistant
+6. reboot HomeAssistant
 
-6. Use your new sensor. For example take a dashbord and ad a new manuel card and insert the follow:
+7. Use your new sensor. For example take a dashbord and ad a new manuel card and insert the follow:
 
 type: custom:mini-graph-card
 entities:
-  - sensor.cointracking_api
+  - sensor.cointracking_balance # change it, if you wish an other name
 name: Cointracking Balance
 icon: mdi:ethereum
 fill: true
 state: true
-line_width: 2
-hours_to_show: 72
+line_width: 1
+hours_to_show: 48
 points_per_hour: 12
 show:
   average: false
