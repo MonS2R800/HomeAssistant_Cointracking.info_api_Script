@@ -7,7 +7,7 @@ Install
 1. Go to you Home Assistant, create a new folder "python_scripts" in the fileeditor. 
 /homeassistant/python_scripts
 
-2. In the folder "python_script" create a file with a name of your sensor script.
+2. In the folder "python_scripts" create a file with a name of your sensor script.
 /homeassistant/python_scripts/your_script_name.py
 
 3. Copy the contents of the file "cointracking_api.py" into the file you just created.
@@ -16,6 +16,7 @@ Install
 
 5. go to /homeassistant/configuration.yaml and ad the follow entries:
 
+```ruby
 python_script:
 
 sensor:
@@ -25,11 +26,12 @@ sensor:
     value_template: "{{ value.split('account_summary:')[1].strip() }}"
     unit_of_measurement: "EUR"
     scan_interval: 300
-
-6. reboot HomeAssistant
+```
+6. Reboot HomeAssistant.
 
 7. Use your new sensor. For example take a dashbord and ad a new manuel card and insert the follow:
 
+```ruby
 type: custom:mini-graph-card
 entities:
   - sensor.cointracking_balance # change it, if you wish an other name
@@ -45,14 +47,15 @@ show:
   extrema: true
 hour24: true
 color_thresholds:
-  - value: 11000
+  - value: 1000
     color: '#ff0000'
-  - value: 11500
+  - value: 2500
     color: '#d35e00'
-  - value: 12000
+  - value: 5000
     color: '#FFFF00'
-  - value: 12500
+  - value: 10000
     color: '#FFFF00'
-  - value: 13544
+  - value: 15000
     color: '#29ff29'
+```
 
