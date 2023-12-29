@@ -26,6 +26,17 @@ sensor:
     value_template: "{{ value.split('account_summary:')[1].strip() }}"
     unit_of_measurement: "EUR"
     scan_interval: 300
+
+From version 2023.8 the synthax has been changed and must now be inserted into the ocnfigurations.yaml as follows.
+
+command_line:
+  - sensor:
+      name: CoinTracking Balance
+      command: "python3 /config/python_scripts/your_script_name.py"
+      value_template: "{{ value.split('account_summary:')[1].strip() }}"
+      unit_of_measurement: "EUR"
+      scan_interval: 300
+
 ```
 6. Reboot HomeAssistant.
 
