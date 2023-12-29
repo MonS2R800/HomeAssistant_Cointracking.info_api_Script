@@ -27,7 +27,7 @@ sensor:
     unit_of_measurement: "EUR"
     scan_interval: 300
 
-From version 2023.8 the synthax has been changed and must now be inserted into the ocnfigurations.yaml as follows.
+From version 2023.8 the synthax has been changed as follows.
 
 command_line:
   - sensor:
